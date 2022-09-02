@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { useMutation } from '@apollo/client';
 import { Stage, Layer, Line, Text, Group } from 'react-konva';
 import { ADD_PIC } from '../utils/mutations'
+import context from 'react-bootstrap/esm/AccordionContext';
 
 // function to convert current canvas to image 
 function downloadpic(pic, name) {
@@ -61,7 +62,7 @@ const Canvas = (props) => {
     // pos.x = pos.x*scale.x
     // pos.y = pos.y*scale.y
     setLines([...lines, { tool, color, width, points: [pos.x, pos.y] }]);
-    setFlips([...flips, { tool, color, width, points: [window.innerWidth-pos.x, pos.y] }])
+    setFlips([...flips, { tool, color, width, points: [720-pos.x, pos.y] }])
   };
 
   const handleMouseMove = (e) => {
@@ -81,7 +82,7 @@ const Canvas = (props) => {
 
     // add point
     lastLine.points = lastLine.points.concat([point.x, point.y]);
-    lastFlip.points = lastFlip.points.concat([window.innerWidth-point.x, point.y]);
+    lastFlip.points = lastFlip.points.concat([720-point.x, point.y]);
 
     // replace last
     lines.splice(lines.length - 1, 1, lastLine);
@@ -93,9 +94,9 @@ const Canvas = (props) => {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
-    let i = lines.length - 1
-    console.log("lines" + lines[i].points)
-    console.log("flips" + flips[i].points)
+    // let i = lines.length - 1
+    // console.log("lines" + lines[i].points)
+    // console.log("flips" + flips[i].points)
   };
 
   //------ End mouse events -------//
@@ -108,7 +109,7 @@ const Canvas = (props) => {
     // pos.y = pos.y*scale.y
 
     setLines([...lines, { tool, color, width, points: [pos.x, pos.y] }]);
-    setFlips([...flips, { tool, color, width, points: [window.innerWidth-pos.x, pos.y]}])
+    setFlips([...flips, { tool, color, width, points: [720-pos.x, pos.y]}])
   };
 
   const handleTouchMove = (e) => {
@@ -124,7 +125,7 @@ const Canvas = (props) => {
 
     // add point
     lastLine.points = lastLine.points.concat([point.x, point.y]);
-    lastFlip.points = lastFlip.points.concat([window.innerWidth-point.x, point.y]);
+    lastFlip.points = lastFlip.points.concat([720-point.x, point.y]);
 
     // replace last
     lines.splice(lines.length - 1, 1, lastLine);
@@ -142,20 +143,28 @@ const Canvas = (props) => {
 
   const stageRef = React.useRef(null);
 
-  const handleExport = async () => {
+  const handleExport = async (context) => {
     const pic = stageRef.current.toDataURL();
     pic.toString();
-
-    try {
-      await addPic({variables: {pngString: pic}});
-    }
-    catch (err) {
-      console.log(err)
-    }
+    const obj = stageRef.current.toObject();
+    console.log(obj)
+    // if (context.user) {
+      try {
+        await addPic({variables: {pngString: pic}})
+          .then(setLines([]))
+          .then(setFlips([]))
+      }
+      catch (err) {
+        console.log(err)
+      }
+    // } else {
+    //   window.alert("You must be signed in to save your drawings")
+    // }
+    
 
     // console.log(pngString);
-    setLines([]);
-    setFlips([]);
+    // setLines([]);
+    // setFlips([]);
     // Instead of logging here we can 
     // save to database or allow downloads
     // using the generated pic
@@ -167,20 +176,20 @@ const Canvas = (props) => {
     setFlips([]);
   };
 
-  window.onresize = function() {
-    // setCanvasW(window.innerWidth);
-    // setCanvasH(window.innerHeight);
-    // console.log(canvasW)
-    let x = window.innerWidth/screen.width
-    let y = window.innerHeight/screen.height
-    setScale({x: (window.innerWidth/screen.width), y: (window.innerHeight/screen.height)})
-    console.log("w", screen.width)
-    console.log("h", screen.height)
-    console.log(scale)
-    let i = lines.length - 1
-    console.log("lines" + lines[i].points)
-    console.log("flips" + flips[i].points)
-  }
+  // window.onresize = function() {
+  //   // setCanvasW(window.innerWidth);
+  //   // setCanvasH(window.innerHeight);
+  //   // console.log(canvasW)
+  //   let x = window.innerWidth/screen.width
+  //   let y = window.innerHeight/screen.height
+  //   setScale({x: (window.innerWidth/screen.width), y: (window.innerHeight/480)})
+  //   console.log("w", screen.width)
+  //   console.log("h", screen.height)
+  //   console.log(scale)
+  //   let i = lines.length - 1
+  //   console.log("lines" + lines[i].points)
+  //   console.log("flips" + flips[i].points)
+  // }
 
   // // Adjust canvas scale function
   // function fitStageIntoParentContainer() {
@@ -203,15 +212,15 @@ const Canvas = (props) => {
   // window.addEventListener('resize', fitStageIntoParentContainer);
 
   return (
-    <div id='canvas-container'>
-      <div>
-        <p>Click and drag to draw!</p>
+      <div className='d-flex justify-content-center'>
+        <div>
+        <p className='text-center mt-1'>Click and drag to draw!</p>
 
         {/* Clear button */}
-        <button className='btn btn-danger' onClick={clearCanvas} disabled={lines.length === 0 && true}>Clear</button>
+        <button className='btn btn-danger w-50' onClick={clearCanvas} disabled={lines.length === 0 && true}>Clear</button>
       
         {/* Save button */}
-        <button className='btn btn-primary' onClick={handleExport} disabled={lines.length === 0 && true}>Save</button>
+        <button className='btn btn-primary w-50' onClick={handleExport} disabled={lines.length === 0 && true}>Save</button>
 
         {/* Tool Selector */}
         {/* <select
@@ -270,14 +279,14 @@ const Canvas = (props) => {
         <option value="14">large</option>
         <option value="20">largest</option>
       </Form.Select>
-
+      <div className='canvas-container border border-3 rounded'>
         <Stage
           id='canvas'
           ref={stageRef}
           brightness={1}
-          width={window.innerWidth}
-          height={window.innerHeight}
-          scale={scale}
+          width={720}
+          height={480}
+          // scale={scale}
           onMouseDown={handleMouseDown}
           onMousemove={handleMouseMove}
           onMouseup={handleMouseUp}
@@ -294,7 +303,7 @@ const Canvas = (props) => {
                   shadowColor={line.color}
                   strokeWidth={line.width}
                   tension={0.5}
-                  scaleX={1}
+                  // scaleX={1}
                   opacity={line.tool === 'pen' && 0.6 || line.tool === 'eraser' && 1}
                   lineCap="round"
                   lineJoin="round"
@@ -321,6 +330,7 @@ const Canvas = (props) => {
               ))}
           </Layer>    
         </Stage>
+      </div>
       </div>
     </div>
   )
