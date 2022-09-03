@@ -7,13 +7,15 @@ import User from "./pages/User"
 import Login from "./pages/Login"
 import PageNotFound from "./pages/404"
 import Navigation from "./components/Navigation"
-import Canvas from './components/Canvas'
+import Canvas from './components/Canvas';
 import Discussions from './pages/Discussions'
 import Rorschachs from './pages/Rorschachs'
+import Rorschach from "./components/Rorschach";
 import SignUp from './pages/Signup'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Discussion from "./pages/Discussion";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,7 +55,9 @@ function App() {
                   <Route path=":username" element={<User />} />
                 </Route>
                 <Route path="/draw" element={<Canvas />} />
-                <Route path="/discuss" element={<Discussions />} />
+                <Route path="/discuss" element={<Discussions />}>
+                  <Route path=":id" element={<Discussions />} />
+                </Route>
                 <Route path="/rorschachs" element={<Rorschachs />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="*" element={<PageNotFound />} />
