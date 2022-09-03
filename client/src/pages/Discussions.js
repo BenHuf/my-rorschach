@@ -12,7 +12,15 @@ const Discussions = ({currentUserId}) => {
     function PicID() {
         let { id } = useParams();
         return id;
-      }
+    }
+
+    // const fetchDiscussions = async () => {
+    //     const lookupQuery = await fetch("/api/comments")
+    //     const parsedResponse = await lookupQuery.json()
+    //     if( parsedResponse.result === "success" ){
+    //         setAllDiscussions(parsedResponse.payload)
+    //     }
+    // }
 
     const [discussions, setDiscussions] = useState([]);
     console.log(discussions)
@@ -48,20 +56,9 @@ const Discussions = ({currentUserId}) => {
             setDiscussions(data)
         })
     }, [])
-    
-    // // TODO: Handle comment functionality
-    // const handleSubmit = (e) => {
-    // }
-
-    // // TODO: Handle delete functionality
-    // const handleDelete = (e) => {
-    // }
-    // // TODO: Add Reply functionality - nested? 
-    // // const handleReply = (e) => {
-    // // }
 
     return (
-        <div className="discussions">
+        <div className="discussions container">
             {PicID() && <Rorschach/>}
             <h3 className="discussion-title">Discuss Rorschachs</h3>
             <div className="discussion-form-title">Start Discussion</div>

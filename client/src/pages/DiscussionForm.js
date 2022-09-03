@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Discussions from "./Discussions";
 
 const DiscussionForm = ({handleSubmit}) => {
 
@@ -19,7 +18,7 @@ const DiscussionForm = ({handleSubmit}) => {
                 className="discussion-form-textarea" 
                 value={text} 
                 onChange={(e) => setText(e.target.value)}/>
-            <button className="discussion-form-button" disabled={isTextAreaDisabled}>Write</button>
+            <button className="discussion-form-button btn btn-primary mb-2" disabled={isTextAreaDisabled}>Comment</button>
         </form>
     )
 }
