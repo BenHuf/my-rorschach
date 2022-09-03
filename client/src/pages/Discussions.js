@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { getDiscussions as getDiscussionsApi, 
         createDiscussion as createDiscussionApi,
         deleteDiscussion as deleteDiscussionApi} from '../discussions.js'
 import Discussion from '../pages/Discussion'
 import DiscussionForm from "./DiscussionForm.js";
+import Rorschach from "../components/Rorschach.js";
 
 const Discussions = ({currentUserId}) => {
+    
+    function PicID() {
+        let { id } = useParams();
+        return id;
+      }
 
     const [discussions, setDiscussions] = useState([]);
     console.log(discussions)
@@ -55,6 +62,7 @@ const Discussions = ({currentUserId}) => {
 
     return (
         <div className="discussions">
+            {PicID() && <Rorschach/>}
             <h3 className="discussion-title">Discuss Rorschachs</h3>
             <div className="discussion-form-title">Start Discussion</div>
             <DiscussionForm handleSubmit={addDiscussion}/>
