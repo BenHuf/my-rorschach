@@ -25,4 +25,11 @@ const commentSchema = new Schema(
   }
 );
 
-module.exports = commentSchema;
+replySchema.virtual('replyCount').get(function() {
+  return this.replies.length;
+});
+
+
+const Comment = model('Comment', commentSchema);
+
+module.exports = Comment;
