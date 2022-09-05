@@ -25,6 +25,4 @@ const replySchema = new Schema(
     }
 );
 
-const Reply = model('Reply', replySchema);
-
-module.exports = Reply;
+module.exports = replySchema;

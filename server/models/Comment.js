@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const replySchema = require('./Reply');
 const dateFormat = require('../utils/dateFormat');
 
@@ -31,7 +31,4 @@ commentSchema.virtual('replyCount').get(function() {
   return this.replies.length;
 });
 
-
-const Comment = model('Comment', commentSchema);
-
-module.exports = Comment;
+module.exports = commentSchema;
