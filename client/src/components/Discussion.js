@@ -22,6 +22,24 @@ const Discussion = () => {
   console.log(data)
   }
 
+//   const handleDelete = async (e) => {
+//     e.preventDefault()
+
+//     if (window.confirm('Are you sure that you want to remove comment?')) {
+
+//     console.log(commentBody , id)
+//       try {
+//           await deleteComment({
+//               variables: {commentBody: commentBody, picId: id},
+//           });
+//       } catch (e) {
+//           alert("Something went wrong...")
+//           console.error(e);
+//       }
+//   }
+// }
+
+
   return (
     <>      
       {data.pic.comments.map(comment => (
@@ -36,9 +54,9 @@ const Discussion = () => {
               <div className="discussion-text">{comment.commentBody}</div>
             </div>
             <div className="discussion-actions">
-            <div className="discussion-action">Reply</div>
-            <div className="discussion-action">Delete</div>
-          </div>
+              <div className="discussion-action">Reply</div>
+              <div className="discussion-action">Delete</div>
+            </div>
           </div>
         </div>
       ))}

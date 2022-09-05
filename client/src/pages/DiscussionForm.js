@@ -44,14 +44,14 @@ const DiscussionForm = () => {
 
     return (
             <form onSubmit={handleFormSubmit}>
-                <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+                <p className={`float-end m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
                     {characterCount}/280
                 </p>
                 <textarea 
                     className="discussion-form-textarea" 
                     value={commentBody} 
                     onChange={handleChange}/>
-                <button className="discussion-form-button btn btn-primary mb-2" disabled={isTextAreaDisabled}>Start Discussion</button>
+                <button className="discussion-form-button btn btn-primary mb-2 float-end mt-2 pt-1" disabled={isTextAreaDisabled}>Start Discussion</button>
             </form>
     )
 }
