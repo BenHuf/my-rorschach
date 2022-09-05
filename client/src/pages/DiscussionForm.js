@@ -7,7 +7,7 @@ import { ADD_COMMENT } from "../utils/mutations";
 function PicID() {
     let { id } = useParams();
     return id;
-  }
+}
 
 const DiscussionForm = () => {
     let id = PicID();
