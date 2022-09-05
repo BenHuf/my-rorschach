@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from "../utils/mutations";
 
-const DiscussionForm = ({handleSubmit}) => {
+const DiscussionForm = ({picId}) => {
 
     const [text, setText] = useState("");
     const [characterCount, setCharacterCount] = useState(0);
@@ -17,16 +17,16 @@ const DiscussionForm = ({handleSubmit}) => {
             setCharacterCount(e.target.value.length);
         }
     };
-
-    const onSubmit = (e) => {
+    // submit form
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
 
         try {
-            addComment({
-                // variables: { commentBody, picId }, // Giving me Error - HELP
+            await addComment({
+                variables: { text, picId },
             });
         // resets form
-        handleSubmit(text);
+        // handleSubmit(text); - previously used for hardcoded values
         setText("");
         } catch (e) {
             console.error(e);
@@ -34,7 +34,7 @@ const DiscussionForm = ({handleSubmit}) => {
     }
 
     return (
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleFormSubmit}>
                 <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
                     {characterCount}/280
                     {error && <span className="ml-2">Something went wrong...</span>}
