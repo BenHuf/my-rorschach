@@ -4,16 +4,16 @@ import { ADD_COMMENT } from "../utils/mutations";
 
 const DiscussionForm = ({picId}) => {
 
-    const [text, setText] = useState("");
+    const [commentBody, setBody] = useState("");
     const [characterCount, setCharacterCount] = useState(0);
     const [addComment, { error }] = useMutation(ADD_COMMENT);
 
-    const isTextAreaDisabled = text.length === 0;
+    const isTextAreaDisabled = commentBody.length === 0;
 
     // update state based on form input changes
     const handleChange = (e) => {
         if (e.target.value.length <= 280) {
-            setText(e.target.value);
+            setBody(e.target.value);
             setCharacterCount(e.target.value.length);
         }
     };
@@ -23,12 +23,12 @@ const DiscussionForm = ({picId}) => {
 
         try {
             await addComment({
-                variables: { text, picId },
+                variables: { commentBody, picId },
             });
         // resets form
-        // handleSubmit(text); - previously used for hardcoded values
-        setText("");
+        setBody("");
         } catch (e) {
+            alert("Something went wrong...")
             console.error(e);
         }
     }
@@ -37,13 +37,12 @@ const DiscussionForm = ({picId}) => {
             <form onSubmit={handleFormSubmit}>
                 <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
                     {characterCount}/280
-                    {error && <span className="ml-2">Something went wrong...</span>}
                 </p>
                 <textarea 
                     className="discussion-form-textarea" 
-                    value={text} 
+                    value={commentBody} 
                     onChange={handleChange}/>
-                <button className="discussion-form-button btn btn-primary mb-2" disabled={isTextAreaDisabled}>Comment</button>
+                <button className="discussion-form-button btn btn-primary mb-2" disabled={isTextAreaDisabled}>Start Discussion</button>
             </form>
     )
 }
