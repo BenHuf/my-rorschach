@@ -511,8 +511,8 @@
   }
 
   .canvas-container {
-    width: 720px !important;
-    height: 480px !important;
+    /* width: 720px !important;
+    height: 480px !important; */
     padding: 0;
     display: flex;
     justify-self: center;
