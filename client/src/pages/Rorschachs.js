@@ -1,7 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_PICS } from '../utils/queries';
 import { Container } from 'react-bootstrap';
+import Auth from '../utils/auth'
 const slash = "/discuss/"
+
 
 const Rorschachs = () => {
   const { loading, error, data } = useQuery(QUERY_PICS)
@@ -11,7 +13,11 @@ const Rorschachs = () => {
   if (data) {
     console.log(data)
   }
-
+  if (!Auth.loggedIn()){
+    return (
+      <p>Nice try Gary!</p>
+    )
+  }
   return (
     <Container>
       {data.pics.map(pic => (
