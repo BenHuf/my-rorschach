@@ -30,6 +30,13 @@ const typeDefs = gql`
     username: String
   }
 
+  type Reply {
+    _id: ID
+    replyBody: String
+    createdAt: String
+    username: String
+  }
+
   type Query{
     me: User
     users: [User]
@@ -44,6 +51,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addPic(pngString: String!): Pic
     addComment(picId: ID!, commentBody: String!): Pic
+    addReply(commentId: ID!, replyBody: String!): Comment
   }
 `
 
