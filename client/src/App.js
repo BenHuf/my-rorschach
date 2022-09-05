@@ -15,7 +15,6 @@ import SignUp from './pages/Signup'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Discussion from "./pages/Discussion";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
