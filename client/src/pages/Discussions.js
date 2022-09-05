@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 // import { getDiscussions as getDiscussionsApi, 
 //         createDiscussion as createDiscussionApi,
 //         deleteDiscussion as deleteDiscussionApi} from '../discussions.js'
-import Discussion from '../pages/Discussion'
+import Discussion from '../components/Discussion'
 import DiscussionForm from "./DiscussionForm.js";
 import Rorschach from "../components/Rorschach.js";
 
@@ -20,7 +20,8 @@ const Discussions = ({ comments }) => {
             <h3 className="discussion-title">Discuss Rorschachs</h3>
             <div className="discussion-form-title">Share your artistic opinion</div>
             <DiscussionForm />
-            <div className="discussion-container">
+            <Discussion />
+            {/* <div className="discussion-container">
                 {comments &&
                 comments.map(comment => (
                     // use component instead of <p> tag
@@ -34,7 +35,7 @@ const Discussions = ({ comments }) => {
                         </Link>
                     </p>
                 ))}
-            </div>
+            </div> */}
         </div>
     )
 }

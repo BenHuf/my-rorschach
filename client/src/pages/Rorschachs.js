@@ -14,7 +14,7 @@ const Rorschachs = () => {
 
   return (
     <Container>
-      {data.pics.map((pic) => (
+      {data.pics.map(pic => (
         <a key={pic._id} href={slash + pic._id}><img src={pic.pngString} /></a>
       ))}
     </Container>

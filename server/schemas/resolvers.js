@@ -81,14 +81,12 @@ const resolvers = {
     },
     addComment: async (parent, args, context) => {
       if (context.user) {
-        const comment = await Comment.create({ ...args, username: context.user.username });
-
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { comments: comment._id } },
+        const updatedPic = await Pic.findByIdAndUpdate(
+          { _id: args.picId },
+          { $push: {comments: { commentBody: args.commentBody, username: context.user.username } } },
           { new: true }
         );
-        return comment;
+        return updatedPic;
       }
 
       throw new AuthenticationError('You need to be logged in!');
