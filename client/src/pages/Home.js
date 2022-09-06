@@ -1,5 +1,6 @@
 import logo from "../assets/images/logo.svg";
 import "../assets/stylesheets/App.css";
+import { Link, Outlet } from "react-router-dom";
 
 const Home = (props) => {
   return (
@@ -12,9 +13,13 @@ const Home = (props) => {
             Design abstract art with strangers, browse past creations, and weigh
             in on what you see!{" "}
           </p>
-          <button className="home-btn-log">Login</button>
+          <a href="/login">
+            <button className="home-btn-log">Login</button>
+          </a>
           <br></br>
-          <button className="home-btn-sign">Sign Up</button>
+          <a href="/signup">
+            <button className="home-btn-sign">Sign Up</button>
+          </a>
         </div>
       </div>
     </div>
