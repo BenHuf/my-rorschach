@@ -42,7 +42,7 @@ export const ADD_PIC = gql`
 
 export const ADD_COMMENT = gql`
   mutation addComment($picId: ID!, $commentBody: String!) {
-    addReaction(picId: $picId, commentBody: $commentBody) {
+    addComment(picId: $picId, commentBody: $commentBody) {
       _id
       comments {
         _id

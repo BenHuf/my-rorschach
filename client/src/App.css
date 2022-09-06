@@ -120,9 +120,14 @@
 
 /* B A C K G R O U N D  I M A G E */
 .bck-image {
+<<<<<<< HEAD
   background-image: url(./assets/images/rorschach-ink.png);
   height: 50%;
   width: 100%;
+=======
+  background-image: url(./images/rorschach-ink.jpeg);
+  background-size: cover;
+>>>>>>> ef2b9cb48bcbccd095dbe1198f6d3aefbbc78a2a
   border-radius: 20px;
   height: 100vh;
   background-position: center;
@@ -569,8 +574,8 @@
   }
 
   .canvas-container {
-    width: 720px !important;
-    height: 480px !important;
+    /* width: 720px !important;
+    height: 480px !important; */
     padding: 0;
     display: flex;
     justify-self: center;

@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { Container, Form } from 'react-bootstrap';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
 import { useMutation } from '@apollo/client';
+import { Form } from 'react-bootstrap';
 import { Stage, Layer, Line, Text, Group } from 'react-konva';
 import { ADD_PIC } from '../utils/mutations'
-import context from 'react-bootstrap/esm/AccordionContext';
 
 // function to convert current canvas to image 
 function downloadpic(pic, name) {
@@ -22,34 +20,19 @@ const Canvas = (props) => {
   const [width, setWidth] = React.useState(7)
   const [lines, setLines] = React.useState([]);
   const [flips, setFlips] = React.useState([]);
-  const [canvasH, setCanvasH] = React.useState([window.innerHeight]);
-  const [canvasW, setCanvasW] = React.useState([window.innerWidth]);
+  const [initialW, setInitialW] = React.useState([window.innerWidth-100])
+  const [initialH, setInitialH] = React.useState([(window.innerWidth-100)*(1/2)])
+  const [canvasW, setCanvasW] = React.useState([window.innerWidth-100]);
+  const [canvasH, setCanvasH] = React.useState([(window.innerWidth-100)*(1/2)]);
+  const [canvasZ, setCanvasZ] = React.useState([0])
   const [scale, setScale] = React.useState({x: 1, y: 1})
   const [addPic, { error }] = useMutation(ADD_PIC);
 
   const isDrawing = React.useRef(false);
-  
-  const screen = {width: canvasW, height: canvasH};
-  // const stageW = 1000;
-  // const stageH = 1000;
-  // let container = document.querySelector('#canvas-container');
 
-  // let containerW = window.innerWidth;
-  // let scaleX = containerW / stageW;
-  // let containerH = window.innerHeight;
-  // let scaleY = containerH / stageH;
-  // let scale = {x: scaleX, y: scaleY}
+  React.useEffect(() => {
 
-  // React.useEffect(() => {
-  //   // Update the document title using the browser API
-  //   screen = {height: window.innerHeight, width: window.innerWidth}
-  //   console.log(screen)
-  // });
-
-  // Canvas.componentDidMount = function() {
-  //   screen = {height: window.innerHeight, width: window.innerWidth};
-  //   console.log(screen)
-  // }
+  });
 
   document.body.addEventListener('touchmove', function(e){ e.preventDefault(); }, { passive: false });
 
@@ -58,11 +41,9 @@ const Canvas = (props) => {
   const handleMouseDown = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getRelativePointerPosition();
-    // let change = e.target.getStage().getRelativePointerPosition()/e.target.getStage().getPointerPosition();
-    // pos.x = pos.x*scale.x
-    // pos.y = pos.y*scale.y
     setLines([...lines, { tool, color, width, points: [pos.x, pos.y] }]);
-    setFlips([...flips, { tool, color, width, points: [720-pos.x, pos.y] }])
+    setFlips([...flips, { tool, color, width, points: [initialW-pos.x, pos.y] }])
+    setCanvasZ(canvasZ+1)
   };
 
   const handleMouseMove = (e) => {
@@ -72,17 +53,15 @@ const Canvas = (props) => {
     }
     const stage = e.target.getStage()
     let stageSize = stage.getAttrs()
-    // const stageW = stage.getSelfRect();
     console.log(stageSize)
     const point = stage.getRelativePointerPosition();
-    // let change = e.target.getStage().getRelativePointerPosition()/e.target.getStage().getPointerPosition();
     let lastLine = lines[lines.length - 1];
     let lastFlip = flips[flips.length -1];
 
 
     // add point
     lastLine.points = lastLine.points.concat([point.x, point.y]);
-    lastFlip.points = lastFlip.points.concat([720-point.x, point.y]);
+    lastFlip.points = lastFlip.points.concat([initialW-point.x, point.y]);
 
     // replace last
     lines.splice(lines.length - 1, 1, lastLine);
@@ -105,11 +84,9 @@ const Canvas = (props) => {
   const handleTouchStart = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getRelativePointerPosition();
-    // pos.x = pos.x*scale.x
-    // pos.y = pos.y*scale.y
 
     setLines([...lines, { tool, color, width, points: [pos.x, pos.y] }]);
-    setFlips([...flips, { tool, color, width, points: [720-pos.x, pos.y]}])
+    setFlips([...flips, { tool, color, width, points: [initialW-pos.x, pos.y]}])
   };
 
   const handleTouchMove = (e) => {
@@ -125,7 +102,7 @@ const Canvas = (props) => {
 
     // add point
     lastLine.points = lastLine.points.concat([point.x, point.y]);
-    lastFlip.points = lastFlip.points.concat([720-point.x, point.y]);
+    lastFlip.points = lastFlip.points.concat([initialW-point.x, point.y]);
 
     // replace last
     lines.splice(lines.length - 1, 1, lastLine);
@@ -153,22 +130,11 @@ const Canvas = (props) => {
         await addPic({variables: {pngString: pic}})
           .then(setLines([]))
           .then(setFlips([]))
+          .then(setCanvasZ(0))
       }
       catch (err) {
         console.log(err)
       }
-    // } else {
-    //   window.alert("You must be signed in to save your drawings")
-    // }
-    
-
-    // console.log(pngString);
-    // setLines([]);
-    // setFlips([]);
-    // Instead of logging here we can 
-    // save to database or allow downloads
-    // using the generated pic
-    // downloadpic(pic, 'stage.png');
   };
 
   const clearCanvas = () => {
@@ -176,40 +142,16 @@ const Canvas = (props) => {
     setFlips([]);
   };
 
-  // window.onresize = function() {
-  //   // setCanvasW(window.innerWidth);
-  //   // setCanvasH(window.innerHeight);
-  //   // console.log(canvasW)
-  //   let x = window.innerWidth/screen.width
-  //   let y = window.innerHeight/screen.height
-  //   setScale({x: (window.innerWidth/screen.width), y: (window.innerHeight/480)})
-  //   console.log("w", screen.width)
-  //   console.log("h", screen.height)
-  //   console.log(scale)
-  //   let i = lines.length - 1
-  //   console.log("lines" + lines[i].points)
-  //   console.log("flips" + flips[i].points)
-  // }
-
-  // // Adjust canvas scale function
-  // function fitStageIntoParentContainer() {
-  //   var container = document.querySelector('#canvas-container');
-  //   var canvas = document.querySelector('#canvas')
-  //   // now we need to fit stage into parent container
-  //   var containerWidth = container.width;
-
-  //   // but we also make the full scene visible
-  //   // so we need to scale all objects on canvas
-  //   var scale = containerWidth / 1000;
-
-  //   canvas.width(1000 * scale);
-  //   canvas.height(1000 * scale);
-  //   canvas.scale({ x: scale, y: scale });
-  // }
-
-  // fitStageIntoParentContainer();
-  //     // adapt the stage on any window resize
-  // window.addEventListener('resize', fitStageIntoParentContainer);
+  window.onresize = async function() {
+    // console.log("initialH", initialH, "initialW", initialW)
+    await setCanvasW(window.innerWidth-100);
+    await setCanvasH(canvasW*(1/2))
+    await setScale({x: (canvasW/initialW), y: (canvasH/initialH)})
+    // console.log("scale", scale)
+    // let i = lines.length - 1
+    // console.log("lines" + lines[i].points)
+    // console.log("flips" + flips[i].points)
+  }
 
   return (
       <div className='d-flex justify-content-center'>
@@ -284,9 +226,9 @@ const Canvas = (props) => {
           id='canvas'
           ref={stageRef}
           brightness={1}
-          width={720}
-          height={480}
-          // scale={scale}
+          width={canvasW}
+          height={canvasH}
+          scale={scale}
           onMouseDown={handleMouseDown}
           onMousemove={handleMouseMove}
           onMouseup={handleMouseUp}
@@ -295,6 +237,7 @@ const Canvas = (props) => {
           onTouchEnd={handleTouchEnd}
         >
           <Layer>
+            <Group>
               {lines.map((line, i) => (
                 <Line
                   key={i}
@@ -303,7 +246,6 @@ const Canvas = (props) => {
                   shadowColor={line.color}
                   strokeWidth={line.width}
                   tension={0.5}
-                  // scaleX={1}
                   opacity={line.tool === 'pen' && 0.6 || line.tool === 'eraser' && 1}
                   lineCap="round"
                   lineJoin="round"
@@ -312,6 +254,10 @@ const Canvas = (props) => {
                   }
                 />
               ))}
+              </Group>
+            </Layer>
+            <Layer>
+              <Group>
                 {flips.map((flip, i) => (
                 <Line
                   key={i}
@@ -328,6 +274,7 @@ const Canvas = (props) => {
                   }
                 />
               ))}
+            </Group>
           </Layer>    
         </Stage>
       </div>
