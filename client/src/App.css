@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .discussions {
   margin-top: 20px;
 }
@@ -97,19 +104,15 @@
 .discussion-action:hover {
   text-decoration: underline;
 }
+
 /* C O L O R  P A L E T T E
 #F4F4ED white
 #91DFF2 turqoise
 #605DE4 lght purp
 #2D187C drk purp */
-* {
-  box-sizing: border-box;
-  font-family: "Urbanist", sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-/* H O M E P A G E  S T Y L I N G  
+/* H O M E P A G E  S T Y L I N G
+
 /* N A V  B A R */
 .bg-nav {
   background-color: #2d187c;
@@ -117,10 +120,13 @@
 
 /* B A C K G R O U N D  I M A G E */
 .bck-image {
-  /* background-image: url(./images/rorschach-ink.jpeg); */
-  background-size: cover;
+  background-image: url(./assets/images/rorschach-ink.png);
+  height: 50%;
+  width: 100%;
   border-radius: 20px;
   height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .greet {
@@ -136,13 +142,10 @@
 }
 
 .home-container {
+  margin: 0;
+  padding-top: 200px;
   text-align: center;
   align-items: center;
-  background-color: #8b74e079;
-  padding-top: 90px;
-  padding-right: 90px;
-  padding-bottom: 90px;
-  padding-left: 90px;
   height: 100vh;
 }
 .home-container p {
@@ -153,6 +156,8 @@
   font-size: 60px;
 }
 
+.bg {
+}
 /* L O G I N  B U T T O N */
 .home-btn-log {
   color: #91dff2;
@@ -211,6 +216,59 @@
 /* D R A W */
 
 /* F L E X  C O N T E N T */
+
+/* S I G N  U P */
+.form-holder {
+  border: 2px solid #605de4;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 100px;
+  position: flex;
+}
+
+.card-header {
+  text-align: center;
+  color: #2d187c;
+  font-size: 35px;
+}
+
+.form-input {
+  color: #2d187c;
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  width: 600px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #605de4;
+  border-radius: 15px;
+  outline: none;
+}
+
+/* S I G N  U P  F O R M  B U T T O N */
+.sub-btn {
+  color: #fff;
+  background: #2d187c;
+  border-radius: 20px;
+  border: none;
+  padding: 30px, 45px;
+  width: 120px;
+  height: 40px;
+  outline: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0, auto;
+  display: block;
+  align-self: center;
+  overflow: hidden;
+}
+
+.sub-btn:hover {
+  color: #2d187c;
+  background: none;
+  border: 1px solid #2d187c;
+}
 .flex-row {
   display: flex;
   flex-wrap: wrap;
@@ -522,4 +580,3 @@
     justify-self: center;
   }
 }
-
