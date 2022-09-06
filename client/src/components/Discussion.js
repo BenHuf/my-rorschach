@@ -46,18 +46,18 @@ const Discussion = () => {
         <div className="discussion" key={comment._id}>
           <div className="discussion-image-container">
             <img src={userIcon} className="user-icon" alt="user-icon"/>
+          </div>
             <div className="discussion-right-part">
               <div className="discussion-content">
                 <div className="discussion-author">{comment.username}</div>
-                <div>{comment.createdAt}</div>
+                <div className="discussion-time">{comment.createdAt}</div>
               </div>
               <div className="discussion-text">{comment.commentBody}</div>
+              <div className="discussion-actions small d-flex justify-content-start">
+              <div className="discussion-action d-flex align-items-center me-3">Reply</div>
+              <div className="discussion-action d-flex align-items-center me-3">Delete</div>
             </div>
-            <div className="discussion-actions">
-              <div className="discussion-action">Reply</div>
-              <div className="discussion-action">Delete</div>
             </div>
-          </div>
         </div>
       ))}
     </>

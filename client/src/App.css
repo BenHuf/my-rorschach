@@ -9,6 +9,11 @@
 
 .discussions-container {
   margin-top: 40px;
+  max-width: 70vh;
+}
+
+img {
+  align-items: center;
 }
 
 .discussion-form-title {
@@ -42,13 +47,18 @@
   cursor: default;
 }
 
-.discussion-form-cancel-button {
-  margin-left: 10px;
+form {
+  margin-bottom: 60px;
 }
 
 .discussion {
   display: flex;
   margin-bottom: 28px;
+  width: 60vw;
+}
+
+.discussion-time {
+  flex-direction: column;
 }
 
 .discussion-image-container {
