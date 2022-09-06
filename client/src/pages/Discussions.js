@@ -20,8 +20,10 @@ const Discussions = () => {
     return (
         <div>
             <div className="discussions container">
-                <h3 className="discussion-title text-center">Discuss Rorschachs</h3>
-                <div className="discussion-form-title text-center my-2">Share your artistic opinion</div>
+                <div className="bg-hl">
+                    <h3 className="discussion-title text-center site-name">Discuss Rorschachs</h3>
+                    <div className="discussion-form-title text-center help-tip">Share your artistic opinion</div>
+                </div>
                 {PicID() && <Rorschach/>}
                 <DiscussionForm />
                 <Discussion/>
