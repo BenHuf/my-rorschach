@@ -8,7 +8,8 @@
 /* D I S C U S S I O N   S T Y L I N G  */
 
 .discussions {
-  margin-top: 20px;
+  margin-top: 50px;
+  max-width: 50vw;
 }
 
 .discussions-title {
