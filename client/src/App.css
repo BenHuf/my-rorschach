@@ -105,12 +105,6 @@
   text-decoration: underline;
 }
 
-/* C O L O R  P A L E T T E
-#F4F4ED white
-#91DFF2 turqoise
-#605DE4 lght purp
-#2D187C drk purp */
-
 /* H O M E P A G E  S T Y L I N G
 
 /* N A V  B A R */
@@ -119,22 +113,13 @@
 }
 
 /* B A C K G R O U N D  I M A G E */
-.bck-image {
-  background-image: url("./assets/images/rorschach-ink.png");
-  height: 50%;
-  width: 100%;
-  border-radius: 20px;
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .greet {
   color: #2d187c;
 }
 
 .site-name {
   color: #91dff2;
+  text-shadow: 2px 1px #2e187c9f;
 }
 
 .para {
@@ -155,18 +140,31 @@
 .home-container h1 {
   font-size: 60px;
 }
+.bg-img {
+  background-image: url("./assets/images/rorschach-ink.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .bg {
+  border: 1px solid #605de4;
+  border-radius: 20px;
+  background-color: #c679ec69;
+  height: 60%;
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px;
 }
 /* L O G I N  B U T T O N */
 .home-btn-log {
-  color: #91dff2;
-  background: none;
+  color: #fff;
+  background-color: #91dff2;
   border-radius: 20px;
   padding: 30px, 45px;
   width: 120px;
   height: 40px;
-  border: 1px solid #91dff2;
+  border: none;
   outline: none;
   font-size: 20px;
   font-weight: 500;
@@ -174,19 +172,20 @@
 }
 
 .home-btn-log:hover {
-  color: #fff;
-  background: #91dff2;
+  color: #91dff2;
+  background: none;
+  border: 1px solid #91dff2;
 }
 
 /* S I G N  U P  B U T T O N */
 .home-btn-sign {
-  color: #2d187c;
-  background: none;
+  color: #fff;
+  background-color: #2d187c;
   border-radius: 20px;
   padding: 30px, 45px;
   width: 120px;
   height: 40px;
-  border: 1px solid #2d187c;
+  border: none;
   outline: none;
   font-size: 20px;
   font-weight: 500;
@@ -196,8 +195,9 @@
 }
 
 .home-btn-sign:hover {
-  color: #fff;
-  background: #2d187c;
+  color: #2d187c;
+  background: none;
+  border: 1px solid #2d187c;
 }
 
 /* R O R S C H A C H  S T Y L I N G */
@@ -214,6 +214,31 @@
 /* D I S C U S S  S T Y L I N G */
 
 /* D R A W */
+.canvas-container {
+  border: 3px solid #2d187c;
+  border-radius: 15px;
+}
+
+.home-btn-draw {
+  color: #2d187c;
+  background: none;
+  border-radius: 20px;
+  padding: 30px, 45px;
+  width: 120px;
+  height: 40px;
+  border: 1px solid #2d187c;
+  outline: none;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.home-btn-draw:hover {
+  color: #fff;
+  background: #2d187c;
+}
 
 /* F L E X  C O N T E N T */
 
