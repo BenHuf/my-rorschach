@@ -209,9 +209,7 @@
 /* D I S C U S S  S T Y L I N G */
 
 /* D R A W */
-.blacknwhite {
-  background-image: url('./images/black-white-stroke.jpg');
-}
+
 /* F L E X  C O N T E N T */
 .flex-row {
   display: flex;
