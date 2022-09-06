@@ -7,7 +7,7 @@ import { ADD_COMMENT } from "../utils/mutations";
 function PicID() {
     let { id } = useParams();
     return id;
-  }
+}
 
 const DiscussionForm = () => {
     let id = PicID();
@@ -44,14 +44,15 @@ const DiscussionForm = () => {
 
     return (
             <form onSubmit={handleFormSubmit}>
-                <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-                    {characterCount}/280
-                </p>
                 <textarea 
                     className="discussion-form-textarea" 
+                    placeholder="Type comment here"
                     value={commentBody} 
                     onChange={handleChange}/>
-                <button className="discussion-form-button btn btn-primary mb-2" disabled={isTextAreaDisabled}>Start Discussion</button>
+                <p className={`float-end m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+                    {characterCount}/280
+                </p>
+                <button className="discussion-form-button btn btn-primary mb-2 float-start mt-2 pt-1" disabled={isTextAreaDisabled}>Start Discussion</button>
             </form>
     )
 }
