@@ -53,7 +53,7 @@ const Canvas = (props) => {
     }
     const stage = e.target.getStage()
     let stageSize = stage.getAttrs()
-    console.log(stageSize)
+    // console.log(stageSize)
     const point = stage.getRelativePointerPosition();
     let lastLine = lines[lines.length - 1];
     let lastFlip = flips[flips.length -1];
