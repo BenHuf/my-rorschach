@@ -6,12 +6,18 @@ import { useParams, Link } from "react-router-dom";
 import Discussion from '../components/Discussion'
 import DiscussionForm from "./DiscussionForm.js";
 import Rorschach from "../components/Rorschach.js";
+import Auth from '../utils/auth'
 
 const Discussions = ({ comments }) => {
     
     function PicID() {
         let { id } = useParams();
         return id;
+    }
+    if (!Auth.loggedIn()){
+        return (
+            <p>Nice try Gary!</p>
+        )
     }
 
     return (
