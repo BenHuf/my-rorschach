@@ -117,7 +117,7 @@
 
 /* B A C K G R O U N D  I M A G E */
 .bck-image {
-  background-image: url(./src/images/rorschach-ink.jpeg);
+  background-image: url("./images/rorschach-ink.jpeg");
   background-size: cover;
   border-radius: 20px;
   height: 100vh;
@@ -209,7 +209,9 @@
 /* D I S C U S S  S T Y L I N G */
 
 /* D R A W */
-
+.blacknwhite {
+  background-image: url('./images/black-white-stroke.jpg');
+}
 /* F L E X  C O N T E N T */
 .flex-row {
   display: flex;
@@ -510,8 +512,6 @@
     flex: 0 0 100%;
   }
   .canvas-container {
-    width: 720px !important;
-    height: 480px !important;
     padding: 0;
     display: flex;
     justify-self: center;

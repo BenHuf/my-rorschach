@@ -21,9 +21,9 @@ const Canvas = (props) => {
   const [lines, setLines] = React.useState([]);
   const [flips, setFlips] = React.useState([]);
   const [initialW, setInitialW] = React.useState([window.innerWidth-100])
-  const [initialH, setInitialH] = React.useState([(window.innerWidth-100)*(1/2)])
+  const [initialH, setInitialH] = React.useState([(window.innerWidth-100)])
   const [canvasW, setCanvasW] = React.useState([window.innerWidth-100]);
-  const [canvasH, setCanvasH] = React.useState([(window.innerWidth-100)*(1/2)]);
+  const [canvasH, setCanvasH] = React.useState([(window.innerWidth-100)]);
   const [canvasZ, setCanvasZ] = React.useState([0])
   const [scale, setScale] = React.useState({x: 1, y: 1})
   const [addPic, { error }] = useMutation(ADD_PIC);
@@ -154,7 +154,7 @@ const Canvas = (props) => {
   }
 
   return (
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex justify-content-center blacknwhite'>
         <div>
         <p className='text-center mt-1'>Click and drag to draw!</p>
 
