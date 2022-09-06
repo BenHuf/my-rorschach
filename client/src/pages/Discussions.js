@@ -18,12 +18,14 @@ const Discussions = () => {
     }
 
     return (
-        <div className="discussions container">
-            {PicID() && <Rorschach/>}
-            <h3 className="discussion-title">Discuss Rorschachs</h3>
-            <div className="discussion-form-title">Share your artistic opinion</div>
-            <DiscussionForm />
-            <Discussion/>
+        <div>
+            <div className="discussions container">
+                <h3 className="discussion-title text-center">Discuss Rorschachs</h3>
+                <div className="discussion-form-title text-center my-2">Share your artistic opinion</div>
+                {PicID() && <Rorschach/>}
+                <DiscussionForm />
+                <Discussion/>
+            </div>
         </div>
     )
 }

@@ -23,7 +23,7 @@ const Rorschach = () => {
 
   return (
     <>
-    {id && <img key={data.pic._id} src={data.pic.pngString} />}
+    {id && <img key={data.pic._id} src={data.pic.pngString} className="ror-to-discuss" />}
     </>
   )
 }

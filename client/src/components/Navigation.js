@@ -34,27 +34,28 @@ const Navigation = (props) => {
   return (
     <>
       <Navbar bg="nav" variant="dark" expand="lg">
-        <Container>
+        <Container className="">
           <Navbar.Brand as={Link} to="/">
             My Rorschach
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home" as={Link} to="/">
+              {/* <Nav.Link href="#home" as={Link} to="/">
                 Home
-              </Nav.Link>
-              <Nav.Link href="#draw" as={Link} to="/draw">
-                Draw
-              </Nav.Link>
-              <Nav.Link href="#rorschachs" as={Link} to="/rorschachs">
-                Rorschachs
-              </Nav.Link>
-              <Nav.Link href="#discuss" as={Link} onClick={randomDiscussion} to={discussionUrl}>
-                Discuss
-              </Nav.Link>
+              </Nav.Link> */}
+      
               {Auth.loggedIn() ? (
                 <>
+                  <Nav.Link href="#draw" as={Link} to="/draw">
+                    Draw
+                  </Nav.Link>
+                  <Nav.Link href="#rorschachs" as={Link} to="/rorschachs">
+                    Rorschachs
+                  </Nav.Link>
+                  <Nav.Link href="#discuss" as={Link} onClick={randomDiscussion} to={discussionUrl}>
+                    Discuss
+                  </Nav.Link>
                   <a className="nav-link" href="/" onClick={logout}>
                     Logout
                   </a>

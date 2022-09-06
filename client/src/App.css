@@ -5,6 +5,8 @@
   padding: 0;
 }
 
+/* D I S C U S S I O N   S T Y L I N G  */
+
 .discussions {
   margin-top: 20px;
 }
@@ -111,6 +113,16 @@ form {
   text-decoration: underline;
 }
 
+.ror-to-discuss {
+  background-color: #ffffff;
+  border: 3px solid #605de4;
+  border-radius: 20px;
+  justify-self: center;
+  margin: 3px 0;
+  width: 100%;
+  height: 40vw;
+}
+
 /* H O M E P A G E  S T Y L I N G
 
 /* N A V  B A R */
@@ -148,8 +160,9 @@ form {
 }
 .bg-img {
   background-image: url("./assets/images/rorschach-ink.png");
-  height: 100vh;
+  min-height: 100vh;
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -157,11 +170,18 @@ form {
   border: 1px solid #605de4;
   border-radius: 20px;
   background-color: #c679ec69;
-  height: 60%;
-  width: 100%;
-  margin-top: 50px;
+  height: fit-content;
+  align-self: center;
+  min-width: 100vw;
   padding: 20px;
 }
+
+.emphasis {
+  margin-top: 1vh;
+  color: #91dff2;
+  text-shadow: 1px 2px #2e187c9f;
+}
+
 /* L O G I N  B U T T O N */
 .home-btn-log {
   color: #fff;
@@ -213,6 +233,30 @@ form {
   text-align: center;
 }
 
+.rorschach {
+  height: 10vw;
+  width: 20vw;
+  border: 3px solid #2d187c;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+.help-tip {
+  padding: 12px;
+  margin: 0;
+  color: #2e187c9f;
+  text-shadow: 1px 1px #91dff2;
+  border-radius: 5px ;
+}
+
+.bg-color {
+  background-image: url("./assets/images/rorschach-ink.png");
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* L O G I N  S T Y L I N G */
 
 /* U S E R  S T Y L I N G */
@@ -223,6 +267,8 @@ form {
 .canvas-container {
   border: 3px solid #2d187c;
   border-radius: 15px;
+  background-color: #ffffff;
+  margin-bottom: 40px;
 }
 
 .home-btn-draw {
@@ -246,6 +292,17 @@ form {
   background: #2d187c;
 }
 
+.canvas-container {
+  /* width: 720px !important;
+  height: 480px !important; */
+  padding: 0;
+  display: flex;
+  justify-self: center;
+}
+
+.konvajs-content {
+  justify-self: center;
+}
 /* F L E X  C O N T E N T */
 
 /* S I G N  U P */
@@ -266,7 +323,7 @@ form {
 .form-input {
   color: #2d187c;
   display: flex;
-  margin: 20px;
+  margin: 20px auto 20px auto;
   padding: 10px;
   width: 600px;
   align-items: center;
@@ -597,17 +654,5 @@ form {
 
   .col-xl-12 {
     flex: 0 0 100%;
-  }
-
-  .canvas-container {
-    /* width: 720px !important;
-    height: 480px !important; */
-    padding: 0;
-    display: flex;
-    justify-self: center;
-  }
-
-  .konvajs-content {
-    justify-self: center;
   }
 }

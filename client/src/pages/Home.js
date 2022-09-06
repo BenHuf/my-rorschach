@@ -1,24 +1,28 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import context from "react-bootstrap/esm/AccordionContext";
 import logo from "../assets/images/logo.svg";
 import "../assets/stylesheets/App.css";
 import Auth from "../utils/auth";
 
 const Home = (props) => {
+  useEffect(() => {
+    // Run! Like go get some data from an API.
+  });
+
   return (
-    <div className="bg-img">
+    <div className="bg-img d-flex">
       <div className="home-container">
         <div className="bg">
           <h2 className="greet">Welcome to</h2>
           <h1 className="site-name">My Rorschach</h1>
           <p className="para">
-            Design abstract art with strangers, browse past creations, and weigh
+            Design abstract art, browse past creations, and weigh
             in on what you see!{" "}
           </p>
 
           {Auth.loggedIn() ? (
             <>
-              <p>Welcome, {Auth.getProfile().data.username}</p>
+              <p className="my-3 emphasis">Welcome, {Auth.getProfile().data.username}</p>
               <br />
               <a href="/draw">
                 <button className="home-btn-draw">Draw</button>

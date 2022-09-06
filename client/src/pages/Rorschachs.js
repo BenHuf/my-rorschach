@@ -19,11 +19,14 @@ const Rorschachs = () => {
     )
   }
   return (
-    <Container>
-      {data.pics.map(pic => (
-        <a key={pic._id} href={slash + pic._id}><img src={pic.pngString} /></a>
-      ))}
-    </Container>
+      <div className='d-flex ml-auto mr-auto'>
+        <div className='align-items-center justify-content-center'>
+          <p className='text-center help-tip'>Click any rorschach to discuss!</p>
+          {data.pics.map(pic => (
+            <a className="ror-bg"key={pic._id} href={slash + pic._id}><img className="rorschach col-3" src={pic.pngString} /></a>
+          ))}
+        </div>
+      </div>
   )
 }
 

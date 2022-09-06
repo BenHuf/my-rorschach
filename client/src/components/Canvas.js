@@ -167,7 +167,7 @@ const Canvas = (props) => {
   return (
     <div className="d-flex justify-content-center">
       <div>
-        <p className="text-center mt-1">Click and drag to draw!</p>
+        <p className="text-center help-tip">Click and drag to draw!</p>
 
         {/* Clear button */}
         <button
