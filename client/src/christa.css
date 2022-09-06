@@ -117,7 +117,7 @@
 
 /* B A C K G R O U N D  I M A G E */
 .bck-image {
-  background-image: url(./src/images/rorschach-ink.jpeg);
+  background-image: url("./images/rorschach-ink.jpeg");
   background-size: cover;
   border-radius: 20px;
   height: 100vh;
@@ -510,8 +510,6 @@
     flex: 0 0 100%;
   }
   .canvas-container {
-    width: 720px !important;
-    height: 480px !important;
     padding: 0;
     display: flex;
     justify-self: center;
