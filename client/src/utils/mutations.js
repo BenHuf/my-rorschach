@@ -53,3 +53,20 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($picId: ID!, $commentId: ID!) {
+    deleteComment(picId: $picId, commentId: $commentId) {
+      _id
+      pics {
+        _id
+        createdAt
+        username
+        comments {
+          _id
+          commentBody
+        }
+      }
+    }
+  }
+`;

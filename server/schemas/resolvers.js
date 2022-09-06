@@ -104,6 +104,16 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+    deleteComment: async (parent, args, context) => {
+      if (context.user) {
+        const updatedPic = await Pic.findByIdAndUpdate(
+          { _id: args.picId },
+          { $pull: {comments: { _id: args.commentId } } },
+          { new: true }
+        );
+        return updatedPic;
+      }
+    }
   }
 };
 

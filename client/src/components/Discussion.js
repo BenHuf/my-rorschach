@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_PIC } from "../utils/queries.js";
+import { useMutation } from '@apollo/client';
+import { DELETE_COMMENT } from "../utils/mutations";
 import userIcon from '../images/user-icon.png'
 
 function PicID() {
@@ -12,6 +14,8 @@ const Discussion = () => {
   let id = PicID()
   console.log(id)
 
+  const [deleteComment, { err }] = useMutation(DELETE_COMMENT);
+
   const { loading, error, data } = useQuery(QUERY_PIC, {
     variables: {id}
   })
@@ -22,22 +26,21 @@ const Discussion = () => {
   console.log(data)
   }
 
-//   const handleDelete = async (e) => {
-//     e.preventDefault()
+  const handleDelete = async (e) => {
+    e.preventDefault()
 
-//     if (window.confirm('Are you sure that you want to remove comment?')) {
-
-//     console.log(commentBody , id)
-//       try {
-//           await deleteComment({
-//               variables: {commentBody: commentBody, picId: id},
-//           });
-//       } catch (e) {
-//           alert("Something went wrong...")
-//           console.error(e);
-//       }
-//   }
-// }
+    if (window.confirm('Are you sure that you want to remove comment?')) {
+      try {
+          await deleteComment({
+              variables: {commentId: id, picId: id},
+          });
+          console.log("success")
+      } catch (e) {
+          alert("Something went wrong...")
+          console.log(e);
+      }
+  }
+}
 
 
   return (
@@ -55,7 +58,7 @@ const Discussion = () => {
               <div className="discussion-text">{comment.commentBody}</div>
               <div className="discussion-actions small d-flex justify-content-start">
               <div className="discussion-action d-flex align-items-center me-3">Reply</div>
-              <div className="discussion-action d-flex align-items-center me-3">Delete</div>
+              <div className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>
             </div>
             </div>
         </div>
