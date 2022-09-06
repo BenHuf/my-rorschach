@@ -1,14 +1,36 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Link, Outlet } from "react-router-dom";
-import Auth from "../utils/auth";
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import { useState, useEffect } from "react"
+import { Link, Outlet } from "react-router-dom"
+import Auth from "../utils/auth"
+import { useQuery } from "@apollo/client"
+import { QUERY_PICS } from "../utils/queries"
 
 const Navigation = (props) => {
-  const logout = (event) => {
+  const logout = event => {
     event.preventDefault();
     Auth.logout();
   };
+
+  let i = ""
+  let discussionUrl = ""
+
+    const { loading, error, data } = useQuery(QUERY_PICS)
+    if (data) {
+      console.log(data)
+    } else {
+      discussionUrl = "/"
+    }
+
+    const randomDiscussion = () => {
+      i = Math.floor(Math.random()*(data.pics.length))
+      console.log(i)
+      let pic = data.pics[i]._id
+      discussionUrl = "/discuss/" + pic
+      window.location.replace(discussionUrl)
+    }
+
   return (
     <>
       <Navbar bg="nav" variant="dark" expand="lg">
@@ -28,7 +50,7 @@ const Navigation = (props) => {
               <Nav.Link href="#rorschachs" as={Link} to="/rorschachs">
                 Rorschachs
               </Nav.Link>
-              <Nav.Link href="#discuss" as={Link} to="/discuss">
+              <Nav.Link href="#discuss" as={Link} onClick={randomDiscussion} to={discussionUrl}>
                 Discuss
               </Nav.Link>
               {Auth.loggedIn() ? (
