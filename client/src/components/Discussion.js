@@ -4,6 +4,8 @@ import { QUERY_PIC } from "../utils/queries.js";
 import { useMutation } from '@apollo/client';
 import { DELETE_COMMENT } from "../utils/mutations";
 import userIcon from '../images/user-icon.png'
+import context from "react-bootstrap/esm/AccordionContext.js";
+import auth from "../utils/auth.js";
 
 function PicID() {
   let { id } = useParams();
@@ -28,27 +30,22 @@ const Discussion = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault()
-    // let commentId = this.id
-
-    // console.log(e.target.id)
-    // if (window.confirm('Are you sure that you want to remove comment?')) {
       try {
           await deleteComment({
               variables: {picId: id, commentId: e.target.id}
           });
           console.log("success")
       } catch (e) {
-          alert("Something went wrong...")
           console.log(e);
       }
   }
-// }
 
+  console.log(auth.getProfile().data.username)
+  let user = auth.getProfile().data.username
 
   return (
     <>      
       {data.pic.comments.map(comment => (
-        
         <div className="discussion" key={comment._id}>
           <div className="discussion-image-container">
             <img src={userIcon} className="user-icon" alt="user-icon"/>
@@ -60,8 +57,8 @@ const Discussion = () => {
               </div>
               <div className="discussion-text">{comment.commentBody}</div>
               <div className="discussion-actions small d-flex justify-content-start">
-              <div className="discussion-action d-flex align-items-center me-3">Reply</div>
-              <div id={comment._id} className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>
+              {/* <div className="discussion-action d-flex align-items-center me-3">Reply</div> */}
+              {user == comment.username && <div id={comment._id} className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>}
             </div>
             </div>
         </div>
