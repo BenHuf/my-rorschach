@@ -28,11 +28,13 @@ const Discussion = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault()
+    // let commentId = this.id
 
-    if (window.confirm('Are you sure that you want to remove comment?')) {
+    // console.log(e.target.id)
+    // if (window.confirm('Are you sure that you want to remove comment?')) {
       try {
           await deleteComment({
-              variables: {commentId: id, picId: id},
+              variables: {picId: id, commentId: e.target.id}
           });
           console.log("success")
       } catch (e) {
@@ -40,12 +42,13 @@ const Discussion = () => {
           console.log(e);
       }
   }
-}
+// }
 
 
   return (
     <>      
       {data.pic.comments.map(comment => (
+        
         <div className="discussion" key={comment._id}>
           <div className="discussion-image-container">
             <img src={userIcon} className="user-icon" alt="user-icon"/>
@@ -58,7 +61,7 @@ const Discussion = () => {
               <div className="discussion-text">{comment.commentBody}</div>
               <div className="discussion-actions small d-flex justify-content-start">
               <div className="discussion-action d-flex align-items-center me-3">Reply</div>
-              <div className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>
+              <div id={comment._id} className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>
             </div>
             </div>
         </div>
