@@ -52,6 +52,7 @@ const typeDefs = gql`
     addPic(pngString: String!): Pic
     addComment(picId: ID!, commentBody: String!): Pic
     addReply(commentId: ID!, replyBody: String!): Comment
+    deleteComment(picId: ID!, commentId: ID!): Pic
   }
 `
 

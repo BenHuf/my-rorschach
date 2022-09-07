@@ -41,9 +41,9 @@ const Navigation = (props) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              {/* <Nav.Link href="#home" as={Link} to="/">
+              <Nav.Link href="#home" as={Link} to="/">
                 Home
-              </Nav.Link> */}
+              </Nav.Link>
       
               {Auth.loggedIn() ? (
                 <>
@@ -61,7 +61,14 @@ const Navigation = (props) => {
                   </a>
                 </>
               ) : (
-                <></>
+              <>
+                <Nav.Link href="#login" as={Link} to="/login">
+                  Login
+                </Nav.Link>
+                <Nav.Link href="#signup" as={Link} to="/signup">
+                  Sign Up
+                </Nav.Link>
+              </>
               )}
             </Nav>
           </Navbar.Collapse>
