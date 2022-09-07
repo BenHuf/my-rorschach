@@ -154,7 +154,6 @@ form {
 
 .home-container {
   margin: 0;
-  padding-top: 200px;
   text-align: center;
   align-items: center;
   height: 100vh;
@@ -176,12 +175,12 @@ form {
 
 .bg {
   border: 1px solid #605de4;
-  border-radius: 20px;
   background-color: #c679ec69;
   height: fit-content;
   align-self: center;
   min-width: 100vw;
-  padding: 20px;
+  min-height: 100vh;
+  padding: 50px;
 }
 
 .emphasis {
@@ -254,7 +253,7 @@ form {
   margin: 0;
   color: #2e187c9f;
   text-shadow: 1px 1px #91dff2;
-  border-radius: 5px ;
+  border-radius: 5px;
 }
 
 .bg-color {
