@@ -154,10 +154,12 @@ form {
 
 .home-container {
   margin: 0;
+  padding-top: 200px;
   text-align: center;
   align-items: center;
   height: 100vh;
 }
+
 .home-container p {
   font-size: 30px;
 }
@@ -175,12 +177,12 @@ form {
 
 .bg {
   border: 1px solid #605de4;
+  border-radius: 20px;
   background-color: #c679ec69;
   height: fit-content;
   align-self: center;
   min-width: 100vw;
-  min-height: 100vh;
-  padding: 50px;
+  padding: 20px;
 }
 
 .emphasis {
