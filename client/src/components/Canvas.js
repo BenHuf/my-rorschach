@@ -36,13 +36,7 @@ const Canvas = (props) => {
 
   React.useEffect(() => {});
 
-  document.body.addEventListener(
-    "touchmove",
-    function (e) {
-      e.preventDefault();
-    },
-    { passive: false }
-  );
+  // document.body.addEventListener("touchmove", function (e) {e.preventDefault();}, { passive: false });
 
   //------ Mouse Events ------//
 

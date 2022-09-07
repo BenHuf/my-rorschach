@@ -274,6 +274,7 @@ form {
 /* D R A W */
 .canvas-container {
   border: 3px solid #2d187c;
+  touch-action: none;
   border-radius: 15px;
   background-color: #ffffff;
   margin-bottom: 40px;
@@ -333,7 +334,7 @@ form {
   display: flex;
   margin: 20px auto 20px auto;
   padding: 10px;
-  width: 600px;
+  max-width: 90vw;
   align-items: center;
   justify-content: center;
   border: 1px solid #605de4;
