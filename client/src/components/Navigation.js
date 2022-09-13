@@ -36,7 +36,7 @@ const Navigation = (props) => {
       <Navbar bg="nav" variant="dark" expand="lg">
         <Container className="nav-container">
           <Navbar.Brand as={Link} to="/">
-          <img className="mx-1" src={logo} width={29} height={29}/>
+          <img className="ml-2 mr-1" src={logo} width={29} height={29}/>
             My Rorschach
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-3" />

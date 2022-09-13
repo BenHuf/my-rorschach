@@ -159,7 +159,7 @@ const Canvas = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="bg-img d-flex justify-content-center">
       <div>
         <p className="text-center help-tip">Click and drag to draw!</p>
 

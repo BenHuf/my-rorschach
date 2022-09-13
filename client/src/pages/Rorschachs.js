@@ -24,7 +24,7 @@ const Rorschachs = () => {
     )
   }
   return (
-      <>
+      <div className='bg-img'>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
@@ -33,7 +33,7 @@ const Rorschachs = () => {
           <a className="" key={pic._id} href={slash + pic._id}><img className="rorschach" src={pic.pngString} /></a>
         ))}
       </Masonry>
-      </>
+      </div>
   )
 }
 
