@@ -6,7 +6,7 @@ import { Link, Outlet } from "react-router-dom"
 import Auth from "../utils/auth"
 import { useQuery } from "@apollo/client"
 import { QUERY_PICS } from "../utils/queries"
-
+import logo from "../assets/images/logo-white.svg"
 const Navigation = (props) => {
   const logout = event => {
     event.preventDefault();
@@ -34,13 +34,14 @@ const Navigation = (props) => {
   return (
     <>
       <Navbar bg="nav" variant="dark" expand="lg">
-        <Container className="">
+        <Container className="nav-container">
           <Navbar.Brand as={Link} to="/">
+          <img className="mx-1" src={logo} width={29} height={29}/>
             My Rorschach
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-3" />
+          <Navbar.Collapse id="basic-navbar-nav" className="px-3">
+            <Nav>
               <Nav.Link href="#home" as={Link} to="/">
                 Home
               </Nav.Link>
@@ -50,7 +51,7 @@ const Navigation = (props) => {
                   <Nav.Link href="#draw" as={Link} to="/draw">
                     Draw
                   </Nav.Link>
-                  <Nav.Link href="#rorschachs" as={Link} to="/rorschachs">
+                  <Nav.Link href="/rorschachs">
                     Rorschachs
                   </Nav.Link>
                   <Nav.Link href="#discuss" as={Link} onClick={randomDiscussion} to={discussionUrl}>

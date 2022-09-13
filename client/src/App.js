@@ -44,7 +44,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Navigation/>
-            <div className="bg-color">
+            <div className="">
               <Routes>
                 <Route path="/" element={<Home />}/>          
                 <Route path="/draw" element={<Canvas />} />

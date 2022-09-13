@@ -38,8 +38,8 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
+    <section className="bg-img d-flex">
+      <div className="home-container">
         <div className="form-holder mx-auto">
           <h4 className="card-header">Sign Up</h4>
           <div className="form-body">
@@ -79,7 +79,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </main>
+    </section>
+
   );
 };
 
