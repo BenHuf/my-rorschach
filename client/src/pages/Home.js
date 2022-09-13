@@ -14,7 +14,7 @@ const Home = (props) => {
       <div className="home-container">
         <div className="bg">
           <h2 className="greet">Welcome to</h2>
-          <h1 className="site-name">My Rorschach</h1>
+          <h1 className="site-name border-1">My Rorschach</h1>
           <p className="para">
             Design abstract art, browse past creations, and weigh
             in on what you see!{" "}

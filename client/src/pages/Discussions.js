@@ -18,13 +18,15 @@ const Discussions = () => {
     }
 
     return (
-        <div>
+        <div className="bg-img">
             <div className="discussions container">
                 <div className="bg-hl">
                     <h3 className="discussion-title text-center site-name">Discuss Rorschachs</h3>
                     <div className="discussion-form-title text-center help-tip">Share your artistic opinion</div>
                 </div>
+                <div className="d-flex justify-center">
                 {PicID() && <Rorschach/>}
+                </div>
                 <DiscussionForm />
                 <Discussion/>
             </div>

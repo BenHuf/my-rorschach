@@ -20,13 +20,13 @@ const Canvas = (props) => {
   const [width, setWidth] = React.useState(7);
   const [lines, setLines] = React.useState([]);
   const [flips, setFlips] = React.useState([]);
-  const [initialW, setInitialW] = React.useState([window.innerWidth - 100]);
+  const [initialW, setInitialW] = React.useState([window.innerWidth - 6]);
   const [initialH, setInitialH] = React.useState([
-    (window.innerWidth - 100) * (1 / 2),
+    (window.innerHeight - 190),
   ]);
-  const [canvasW, setCanvasW] = React.useState([window.innerWidth - 100]);
+  const [canvasW, setCanvasW] = React.useState([window.innerWidth - 6]);
   const [canvasH, setCanvasH] = React.useState([
-    (window.innerWidth - 100) * (1 / 2),
+    (window.innerHeight - 190),
   ]);
   const [canvasZ, setCanvasZ] = React.useState([0]);
   const [scale, setScale] = React.useState({ x: 1, y: 1 });
@@ -149,8 +149,8 @@ const Canvas = (props) => {
 
   window.onresize = async function () {
     // console.log("initialH", initialH, "initialW", initialW)
-    await setCanvasW(window.innerWidth - 100);
-    await setCanvasH(canvasW * (1 / 2));
+    await setCanvasW(window.innerWidth - 6);
+    await setCanvasH(window.innerHeight - 190);
     await setScale({ x: canvasW / initialW, y: canvasH / initialH });
     // console.log("scale", scale)
     // let i = lines.length - 1
@@ -159,7 +159,7 @@ const Canvas = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="bg-img d-flex justify-content-center">
       <div>
         <p className="text-center help-tip">Click and drag to draw!</p>
 
