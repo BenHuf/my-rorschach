@@ -6,10 +6,8 @@ import Masonry from 'react-masonry-css'
 const slash = "/discuss/"
 
 const breakpointColumnsObj = {
-  default: 4,
-  1100: 3,
-  700: 2,
-  500: 1
+  default: 5,
+  550: 3
 };
 
 const Rorschachs = () => {
@@ -28,7 +26,7 @@ const Rorschachs = () => {
   return (
       <>
       <Masonry
-        breakpointCols={5}
+        breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
         {data.pics.map(pic => (
