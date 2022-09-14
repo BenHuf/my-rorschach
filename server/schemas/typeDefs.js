@@ -6,7 +6,8 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    Pics: [Pic]  
+    Pics: [Pic]
+    isAdmin: Boolean
   }
 
   type Pic {

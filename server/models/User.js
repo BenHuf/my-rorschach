@@ -25,7 +25,11 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Pic'
       }
-    ]
+    ],
+    isAdmin:{
+      type: Boolean,
+      defualt: 'false'
+    }
   },
   {
     toJSON: {
