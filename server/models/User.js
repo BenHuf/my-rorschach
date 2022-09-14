@@ -28,7 +28,7 @@ const userSchema = new Schema(
     ],
     isAdmin:{
       type: Boolean,
-      defualt: 'false'
+      defualt: false
     }
   },
   {
