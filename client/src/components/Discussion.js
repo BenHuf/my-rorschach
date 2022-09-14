@@ -4,7 +4,6 @@ import { QUERY_PIC } from "../utils/queries.js";
 import { useMutation } from '@apollo/client';
 import { DELETE_COMMENT } from "../utils/mutations";
 import userIcon from '../images/user-icon.png'
-import context from "react-bootstrap/esm/AccordionContext.js";
 import auth from "../utils/auth.js";
 
 function PicID() {
@@ -40,8 +39,9 @@ const Discussion = () => {
       }
   }
 
-  console.log(auth.getProfile().data.username)
+  console.log(auth.getProfile().data.isAdmin)
   let user = auth.getProfile().data.username
+  let isAdmin = auth.getProfile().data.isAdmin
 
   return (
     <>      
@@ -58,7 +58,7 @@ const Discussion = () => {
               <div className="discussion-text">{comment.commentBody}</div>
               <div className="discussion-actions small d-flex justify-content-start">
               {/* <div className="discussion-action d-flex align-items-center me-3">Reply</div> */}
-              {user == comment.username && <div id={comment._id} className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div>}
+              {(user === comment.username || isAdmin === true) ? <div id={comment._id} className="discussion-action d-flex align-items-center me-3" onClick={handleDelete}>Delete</div> : null}
             </div>
             </div>
         </div>
